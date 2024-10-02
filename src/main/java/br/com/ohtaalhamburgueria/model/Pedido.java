@@ -1,6 +1,8 @@
 package br.com.ohtaalhamburgueria.model;
 
 
+import br.com.ohtaalhamburgueria.model.Enums.TipoEntrega;
+import br.com.ohtaalhamburgueria.model.Enums.TipoPagamento;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,25 +22,28 @@ public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    private int id;
 
     @Column
-    String status;
+    private String status;
 
     @Column
-    float valorTotal;
+    private float valorTotal;
+
+    @Enumerated(EnumType.STRING)
+    private TipoEntrega tipoEntrega;
+
+    @Enumerated(EnumType.STRING)
+    private TipoPagamento tipoPagamento;
 
     @Column
-    String tipoRecebimento;
-
-    @Column
-    String tipoPagamento;
-
-    @Column
-    String descricao;
+    private String descricao;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario", nullable = false)
-    Usuario usuario;
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
+
+    @OneToMany(mappedBy = "PEDIDO_ENTITY", cascade = CascadeType.ALL)
+    private List<Produto> produtos;
 
 }

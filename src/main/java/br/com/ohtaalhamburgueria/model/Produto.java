@@ -1,6 +1,5 @@
 package br.com.ohtaalhamburgueria.model;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,30 +10,26 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-@Entity(name = "USER_ENTITY")
-public class Usuario {
+@Entity(name = "PRODUTO_ENTITY")
+public class Produto {
 
-    public Usuario() {
+    public Produto(){
         super();
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int idProduto;
 
     @Column
     private String nome;
 
     @Column
-    private String endereco;
+    private String descricao;
 
     @Column
-    private String telefone;
+    private String preco;
 
-    @Column
-    private String email;
-
-    @OneToMany(mappedBy = "USER_ENTITY", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Pedido> pedidos;
-
+    @OneToMany(mappedBy = "PRODUTO_ENTITY")
+    private List<ProdutosPedido> produtosPedidos;
 }
