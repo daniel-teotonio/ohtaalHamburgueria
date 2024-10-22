@@ -2,17 +2,18 @@ package br.com.ohtaalhamburgueria.service;
 
 import br.com.ohtaalhamburgueria.model.Pedido;
 import br.com.ohtaalhamburgueria.repository.PedidoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class PedidoService {
 
-    @Autowired
-    private PedidoRepository pedidoRepository;
+
+    private final PedidoRepository pedidoRepository;
 
     public List<Pedido> getAllPedidos() {
         return pedidoRepository.findAll();

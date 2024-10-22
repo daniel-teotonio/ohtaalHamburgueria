@@ -48,28 +48,4 @@ public class PedidoController {
         return ResponseEntity.noContent().build();
     }
 
-
-    @GetMapping("/{id}/comprovante-cliente")
-    public ResponseEntity<String> gerarComprovanteCliente(@PathVariable Integer id) {
-        Optional<Pedido> pedido = pedidoService.getPedidoById(id);
-
-        if (pedido.isPresent()) {
-            String comprovanteCliente = ComprovanteUsuario.gerarComprovante(pedido.get());
-            return new ResponseEntity<>(comprovanteCliente, HttpStatus.OK);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @GetMapping("/{id}/comprovante-cozinha")
-    public ResponseEntity<String> gerarComprovanteCozinha(@PathVariable Integer id) {
-        Optional<Pedido> pedido = pedidoService.getPedidoById(id);
-
-        if (pedido.isPresent()) {
-            String comprovanteCozinha = ComprovanteCozinha.gerarComprovante(pedido.get());
-            return new ResponseEntity<>(comprovanteCozinha, HttpStatus.OK);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
 }
