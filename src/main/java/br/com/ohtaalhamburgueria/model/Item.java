@@ -29,6 +29,4 @@ public class Item {
     @Column
     private BigDecimal preco;
 
-    @OneToMany(mappedBy = "ITEM_ENTITY")
-    private List<Item> item;
 }

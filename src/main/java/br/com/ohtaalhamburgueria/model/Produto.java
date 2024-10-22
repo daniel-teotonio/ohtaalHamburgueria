@@ -31,6 +31,5 @@ public class Produto {
     @Column
     private BigDecimal preco;
 
-    @OneToMany(mappedBy = "PRODUTO_ENTITY")
-    private List<ProdutosPedido> produtosPedidos;
+    private Categoria  categoria;
 }

@@ -33,8 +33,4 @@ public class Usuario {
 
     @Column
     private String email;
-
-    @OneToMany(mappedBy = "USER_ENTITY", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Pedido> pedidos;
-
 }

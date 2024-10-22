@@ -23,6 +23,6 @@ public class Categoria {
     private String nome;
 
     @OneToMany(mappedBy = "CATEGORIA_ENTITY", cascade = CascadeType.ALL)
-    private List<Categoria> categoria;
+    private List<Produto> produtos;
 
 }
