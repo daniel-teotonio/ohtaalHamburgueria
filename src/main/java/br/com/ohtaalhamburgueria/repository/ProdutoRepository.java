@@ -1,12 +1,10 @@
 package br.com.ohtaalhamburgueria.repository;
 
-import br.com.ohtaalhamburgueria.model.Categoria;
+import br.com.ohtaalhamburgueria.model.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface CategoriaRepository  extends JpaRepository<Categoria, Integer> {
+public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 
-    Categoria findCategoriaByIdCategoria(Integer idCategoria);
+    Produto findProdutoByIdProduto(Integer idProduto);
 
 }

@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Integer> {
 
-    List<Pedido> findPedidoByUsuario(Integer id);
+    List<Pedido> findPedidoByPedido(Integer idPedido);
 }

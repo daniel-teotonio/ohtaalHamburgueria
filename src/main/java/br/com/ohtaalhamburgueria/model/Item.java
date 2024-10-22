@@ -5,24 +5,30 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@Entity(name = "CATEGORIA_ENTITY")
-public class Categoria {
+@Entity(name = "ITEM_ENTITY")
+public class Item {
 
-    public Categoria() {super();    }
+    public Item(){ super();  }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idCategoria;
+    private int idItem;
 
     @Column
     private String nome;
 
-    @OneToMany(mappedBy = "CATEGORIA_ENTITY", cascade = CascadeType.ALL)
-    private List<Categoria> categoria;
+    @Column
+    private String descricao;
 
+    @Column
+    private BigDecimal preco;
+
+    @OneToMany(mappedBy = "ITEM_ENTITY")
+    private List<Item> item;
 }
