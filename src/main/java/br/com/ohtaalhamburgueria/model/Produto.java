@@ -1,22 +1,17 @@
 package br.com.ohtaalhamburgueria.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.List;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
+@RequiredArgsConstructor
 @Entity(name = "PRODUTO_ENTITY")
 public class Produto {
-
-    public Produto(){
-        super();
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,5 +26,11 @@ public class Produto {
     @Column
     private BigDecimal preco;
 
-    private Categoria  categoria;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
+    @ManyToOne
+    @JoinColumn(name = "pedido_id")
+    private Pedido pedido;
 }

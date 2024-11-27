@@ -1,20 +1,16 @@
 package br.com.ohtaalhamburgueria.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@RequiredArgsConstructor
 @AllArgsConstructor
 @Entity(name = "CATEGORIA_ENTITY")
 public class Categoria {
-
-    public Categoria() {super();    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCategoria;
@@ -22,7 +18,8 @@ public class Categoria {
     @Column
     private String nome;
 
-    @OneToMany(mappedBy = "CATEGORIA_ENTITY", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Produto> produtos;
 
 }

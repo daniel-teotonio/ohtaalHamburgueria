@@ -2,6 +2,7 @@ package br.com.ohtaalhamburgueria.controller;
 
 import br.com.ohtaalhamburgueria.model.Categoria;
 import br.com.ohtaalhamburgueria.service.CategoriaService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,15 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/categorias")
 public class CategoriaController {
 
     private final CategoriaService categoriaService;
-
-    @Autowired
-    public CategoriaController(CategoriaService categoriaService) {
-        this.categoriaService = categoriaService;
-    }
 
     @GetMapping
     public ResponseEntity<List<Categoria>> getAllCategorias() {

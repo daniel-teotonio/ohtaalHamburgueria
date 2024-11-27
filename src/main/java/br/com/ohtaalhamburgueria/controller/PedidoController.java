@@ -3,6 +3,7 @@ import br.com.ohtaalhamburgueria.model.ComprovanteCozinha;
 import br.com.ohtaalhamburgueria.model.ComprovanteUsuario;
 import br.com.ohtaalhamburgueria.model.Pedido;
 import br.com.ohtaalhamburgueria.service.PedidoService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +13,10 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/pedidos")
 public class PedidoController {
 
-    @Autowired
     private PedidoService pedidoService;
 
     @GetMapping

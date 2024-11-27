@@ -4,19 +4,16 @@ package br.com.ohtaalhamburgueria.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Entity(name = "USER_ENTITY")
 public class Usuario {
-
-    public Usuario() {
-        super();
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

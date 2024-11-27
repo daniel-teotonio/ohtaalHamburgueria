@@ -3,32 +3,25 @@ package br.com.ohtaalhamburgueria.controller;
 import br.com.ohtaalhamburgueria.model.ComprovanteCozinha;
 import br.com.ohtaalhamburgueria.model.ComprovanteUsuario;
 import br.com.ohtaalhamburgueria.model.Pedido;
-import br.com.ohtaalhamburgueria.model.ProdutosPedido;
 import br.com.ohtaalhamburgueria.service.PedidoService;
-import br.com.ohtaalhamburgueria.service.ProdutosPedidoService;
+/*import br.com.ohtaalhamburgueria.service.ProdutosPedidoService;*/
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/produtos-pedido")
 public class ProdutosPedidoController {
 
-    private final ProdutosPedidoService produtosPedidoService;
+/*    private final ProdutosPedidoService produtosPedidoService;*/
     private final PedidoService pedidoService;
 
-
-    @Autowired
-    public ProdutosPedidoController(ProdutosPedidoService produtosPedidoService, PedidoService pedidoService) {
-        this.produtosPedidoService = produtosPedidoService;
-        this.pedidoService = pedidoService;
-    }
-
-    @GetMapping
+/*    @GetMapping
     public ResponseEntity<List<ProdutosPedido>> getAllProdutosPedidos() {
         return new ResponseEntity<>(produtosPedidoService.getAllProdutosPedidos(), HttpStatus.OK);
     }
@@ -46,13 +39,13 @@ public class ProdutosPedidoController {
     @PutMapping("/{id}")
     public ResponseEntity<ProdutosPedido> updateProdutosPedido(@PathVariable Integer id, @RequestBody ProdutosPedido produtosPedido) {
         return new ResponseEntity<>(produtosPedidoService.updateProdutosPedido(produtosPedido), HttpStatus.OK);
-    }
+    }*/
 
-    @DeleteMapping("/{id}")
+/*    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProdutosPedido(@PathVariable Integer id) {
         produtosPedidoService.deleteProdutosPedido(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+    }*/
 
     @GetMapping("/{id}/comprovante-cliente")
     public ResponseEntity<String> gerarComprovanteCliente(@PathVariable Integer id) {

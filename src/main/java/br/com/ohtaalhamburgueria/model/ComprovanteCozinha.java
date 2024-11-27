@@ -1,8 +1,5 @@
 package br.com.ohtaalhamburgueria.model;
 
-import br.com.ohtaalhamburgueria.model.Pedido;
-import br.com.ohtaalhamburgueria.model.Produto;
-
 public class ComprovanteCozinha {
 
     public static String gerarComprovante(Pedido pedido) {

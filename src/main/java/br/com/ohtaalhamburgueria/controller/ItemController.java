@@ -2,6 +2,7 @@ package br.com.ohtaalhamburgueria.controller;
 
 import br.com.ohtaalhamburgueria.model.Item;
 import br.com.ohtaalhamburgueria.service.ItemService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,15 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/itens")
 public class ItemController {
 
     private final ItemService itemService;
-
-    @Autowired
-    public ItemController(ItemService itemService) {
-        this.itemService = itemService;
-    }
 
     @GetMapping
     public ResponseEntity<List<Item>> getAllItem() {

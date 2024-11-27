@@ -6,19 +6,16 @@ import br.com.ohtaalhamburgueria.model.Enums.TipoPagamento;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Entity(name = "PEDIDO_ENTITY")
 public class Pedido {
-
-    public Pedido() {
-        super();
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +40,7 @@ public class Pedido {
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "PEDIDO_ENTITY", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<Produto> produtos;
 
 }

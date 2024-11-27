@@ -2,6 +2,7 @@ package br.com.ohtaalhamburgueria.controller;
 
 import br.com.ohtaalhamburgueria.model.Usuario;
 import br.com.ohtaalhamburgueria.service.UsuarioService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,15 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/usuarios")
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
-
-    @Autowired
-    public UsuarioController(UsuarioService usuarioService) {
-        this.usuarioService = usuarioService;
-    }
 
     @GetMapping
     public ResponseEntity<List<Usuario>> getAllUsuarios() {
