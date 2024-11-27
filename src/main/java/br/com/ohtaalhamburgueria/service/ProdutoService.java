@@ -20,8 +20,9 @@ public class ProdutoService {
     private final CategoriaRepository categoriaRepository;
     private final ProdutoMapper produtoMapper;
 
-    public List<Produto> getAllProdutos() {
-        return produtoRepository.findAll();
+    public List<ProdutoDTO> getAllProdutos() {
+        List<Produto> produtos = produtoRepository.findAll();
+        return produtoMapper.toProdutoDTOList(produtos);
     }
 
     public Produto getProdutoById(Integer id) {

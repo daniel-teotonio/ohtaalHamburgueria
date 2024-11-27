@@ -1,9 +1,9 @@
 package br.com.ohtaalhamburgueria.controller;
 
 import br.com.ohtaalhamburgueria.model.Usuario;
+import br.com.ohtaalhamburgueria.model.dto.UsuarioDTO;
 import br.com.ohtaalhamburgueria.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +28,8 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario) {
-        return new ResponseEntity<>(usuarioService.createUsuario(usuario), HttpStatus.CREATED);
+    public ResponseEntity<Usuario> createUsuario(@RequestBody UsuarioDTO request) {
+        return new ResponseEntity<>(usuarioService.createUsuario(request), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")

@@ -1,7 +1,6 @@
 package br.com.ohtaalhamburgueria.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -17,20 +16,22 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idProduto;
 
-    @Column
+    @Column(nullable = false)
     private String nome;
 
-    @Column
+    @Column(nullable = false)
     private String descricao;
 
-    @Column
+    @Column(nullable = false)
     private BigDecimal preco;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "categoria_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoria_id", nullable = false)
+    @JsonIgnore
     private Categoria categoria;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pedido_id")
+    @JsonIgnore
     private Pedido pedido;
 }
